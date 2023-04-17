@@ -1,4 +1,6 @@
+import 'package:book_explore_and_sale_app/common/routes/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'common/theme/theme.dart';
 
 void main() {
@@ -11,9 +13,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
+      getPages: AppRoutes.listRoute,
       theme: MyAppThemeConfig.themeConfig(),
     );
   }

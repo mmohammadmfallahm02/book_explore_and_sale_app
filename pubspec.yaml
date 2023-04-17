@@ -41,6 +41,7 @@ dependencies:
   smooth_page_indicator: ^1.0.1
   skeletons: ^0.0.3
   cached_network_image: ^3.2.3
+  get: ^4.6.5
 
 dev_dependencies:
   flutter_test:
