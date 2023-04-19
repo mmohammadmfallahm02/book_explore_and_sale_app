@@ -10,19 +10,6 @@ class MyAppThemeConfig {
               fontWeight: FontWeight.w700, fontSize: 12, color: Colors.white),
           backgroundColor: MyColors.primaryColor,
           foregroundColor: Colors.white),
-      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          selectedItemColor: MyColors.primaryColor,
-          unselectedItemColor: MyColors.secondaryColor,
-          unselectedLabelStyle: TextStyle(
-            fontSize: 10,
-            fontWeight: FontWeight.w500,
-            color: MyColors.secondaryTextColor,
-          ),
-          selectedLabelStyle: TextStyle(
-            fontSize: 10,
-            fontWeight: FontWeight.w500,
-            color: MyColors.primaryTextColor,
-          )),
       primarySwatch: Colors.blue,
       textTheme: GoogleFonts.urbanistTextTheme(
         const TextTheme(

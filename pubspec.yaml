@@ -60,6 +60,11 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
+flutter_gen:
+  integrations:
+    flutter_svg: true
+
+    
 flutter:
 
   # The following line ensures that the Material Icons font is

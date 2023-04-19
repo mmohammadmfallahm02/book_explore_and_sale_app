@@ -1,10 +1,16 @@
 import 'package:book_explore_and_sale_app/common/routes/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'common/theme/theme.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.white,
+      statusBarIconBrightness: Brightness.dark,
+      systemNavigationBarColor: Colors.white,
+      systemNavigationBarIconBrightness: Brightness.dark));
   runApp(const MyApp());
 }
 
@@ -17,10 +23,10 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
         designSize: const Size(360, 780),
         builder: (context, child) => GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      getPages: AppRoutes.listRoute,
-      theme: MyAppThemeConfig.themeConfig(),
-    ));
+              debugShowCheckedModeBanner: false,
+              title: 'Flutter Demo',
+              getPages: AppRoutes.listRoute,
+              theme: MyAppThemeConfig.themeConfig(),
+            ));
   }
 }
