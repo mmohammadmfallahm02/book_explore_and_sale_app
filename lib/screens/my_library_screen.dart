@@ -5,6 +5,6 @@ class MyLibraryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: Colors.red,);
+    return Scaffold();
   }
 }
