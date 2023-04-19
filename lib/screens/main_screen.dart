@@ -108,6 +108,18 @@ class _MainScreenState extends State<MainScreen> {
     return true;
   }
 
+  Widget _navigator(
+      {required GlobalKey key, required int index, required Widget child}) {
+    return key.currentState == null && selectedPageIndex != index
+        ? const SizedBox()
+        : Navigator(
+            key: key,
+            onGenerateRoute: (settings) => MaterialPageRoute(
+                builder: (context) => Offstage(
+                    offstage: selectedPageIndex != index, child: child)),
+          );
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -118,32 +130,28 @@ class _MainScreenState extends State<MainScreen> {
           body: IndexedStack(
             index: selectedPageIndex,
             children: [
-              Navigator(
-                key: _myLibraryScreenKey,
-                onGenerateRoute: (settings) => MaterialPageRoute(
-                    builder: (context) => const MyLibraryScreen()),
-              ),
-              Navigator(
-                key: _exploreScreenKey,
-                onGenerateRoute: (settings) => MaterialPageRoute(
-                    builder: (context) => const Scaffold(
-                          body: Center(child: Text('explore')),
-                        )),
-              ),
-              Navigator(
-                key: _cartScreenKey,
-                onGenerateRoute: (settings) => MaterialPageRoute(
-                  builder: (context) =>
-                      const Scaffold(body: Center(child: Text('cart'))),
-                ),
-              ),
-              Navigator(
-                key: _communityScreenKey,
-                onGenerateRoute: (settings) => MaterialPageRoute(
-                  builder: (context) =>
-                      const Scaffold(body: Center(child: Text('community'))),
-                ),
-              )
+              _navigator(
+                  child: const MyLibraryScreen(),
+                  key: _myLibraryScreenKey,
+                  index: myLibraryScreenIndex),
+              _navigator(
+                  child: const Scaffold(
+                    body: Center(child: Text('explore')),
+                  ),
+                  key: _exploreScreenKey,
+                  index: exploreScreenIndex),
+              _navigator(
+                  child: const Scaffold(
+                    body: Center(child: Text('cart')),
+                  ),
+                  key: _cartScreenKey,
+                  index: cartScreenIndex),
+              _navigator(
+                  child: const Scaffold(
+                    body: Center(child: Text('community')),
+                  ),
+                  key: _communityScreenKey,
+                  index: communityScreenIndex),
             ],
           )),
     );
