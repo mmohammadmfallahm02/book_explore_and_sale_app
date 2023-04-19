@@ -1,6 +1,7 @@
 import 'package:book_explore_and_sale_app/common/constants/dimens.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../common/theme/theme.dart';
 
 class MainScreen extends StatelessWidget {
@@ -17,59 +18,37 @@ class MainScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ImageIcon(
-                const AssetImage('assets/images/icons/menu.png'),
-                size: 28.sp,
-                color: MyExclusiveColors.iconColor,
-              ),
+     
+            SvgPicture.asset('assets/images/icons/menu.svg',width: 24.w,height: 24.w)
+               
+           ,
               const SizedBox(
                 width: 13,
               ),
               Container(
                 width: 200.w,
-                height: 36.h,
+                height: 36.w,
                 alignment: Alignment.centerRight,
                 padding: EdgeInsets.only(right: 12.w),
                 decoration: BoxDecoration(
                   color: MyExclusiveColors.searchBarColor,
                   borderRadius: BorderRadius.all(Radius.circular(15.w)),
                 ),
-                child: ImageIcon(
-                  const AssetImage('assets/images/icons/search.png'),
-                  size: 28.sp,
-                  color: MyColors.secondaryColor,
-                ),
+               child: SvgPicture.asset('assets/images/icons/search.svg',width: 24.w,height: 24.w)
+                // child: ImageIcon(
+                //   const AssetImage('assets/images/icons/search.png'),
+                //   size: 28.sp,
+                //   color: MyColors.secondaryColor,
+                // ),
               ),
               const SizedBox(
-                width: 25,
+                width: 23,
               ),
-              ImageIcon(
-                const AssetImage('assets/images/icons/scan.png'),
-                size: 28.sp,
-                color: MyExclusiveColors.iconColor,
-              ),
+             SvgPicture.asset('assets/images/icons/scan.svg',width: 28.w,height: 28.w,),
               const SizedBox(
-                width: 4,
+                width: 8,
               ),
-              Stack(
-                children: [
-                  ImageIcon(
-                    const AssetImage('assets/images/icons/notification.png'),
-                    size: 28.sp,
-                    color: MyColors.primaryVariantColor,
-                  ),
-                  Positioned(
-                      right: 6,
-                      top: 6,
-                      child: Container(
-                        width: 7.w,
-                        height: 7.w,
-                        decoration: const BoxDecoration(
-                            color: MyColors.primaryColor,
-                            shape: BoxShape.circle),
-                      ))
-                ],
-              ),
+              SvgPicture.asset('assets/images/icons/notification.svg',width: 24.w,height: 24.w,),
             ]),
       )),
     );
