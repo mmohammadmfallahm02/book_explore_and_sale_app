@@ -20,7 +20,18 @@ const int communityScreenIndex = 3;
 
 class _MainScreenState extends State<MainScreen> {
   int selectedPageIndex = myLibraryScreenIndex;
+  final List<int> _history = [];
+  final GlobalKey<NavigatorState> _myLibraryScreenKey = GlobalKey();
+  final GlobalKey<NavigatorState> _exploreScreenKey = GlobalKey();
+  final GlobalKey<NavigatorState> _cartScreenKey = GlobalKey();
+  final GlobalKey<NavigatorState> _communityScreenKey = GlobalKey();
 
+  late final map = {
+    myLibraryScreenIndex: _myLibraryScreenKey,
+    exploreScreenIndex: _exploreScreenKey,
+    cartScreenIndex: _cartScreenKey,
+    communityScreenIndex: _communityScreenKey,
+  };
   PreferredSize _buildCustomAppBar() {
     return PreferredSize(
       preferredSize: const Size.fromHeight(46),
@@ -69,27 +80,73 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 
+  Widget _buildCustomBottomNav() {
+    return _BottomNavigation(
+      selectedIndex: selectedPageIndex,
+      onTap: (index) {
+        setState(() {
+          _history.remove(selectedPageIndex);
+          _history.add(selectedPageIndex);
+          selectedPageIndex = index;
+        });
+      },
+    );
+  }
+
+  Future<bool> _onWillPop() async {
+    final NavigatorState currentSelectedPageNavigatorState =
+        map[selectedPageIndex]!.currentState!;
+    if (currentSelectedPageNavigatorState.canPop()) {
+      currentSelectedPageNavigatorState.pop();
+      return false;
+    } else if (_history.isNotEmpty) {
+      selectedPageIndex = _history.last;
+      _history.removeLast();
+      setState(() {});
+      return false;
+    }
+    return true;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: _buildCustomAppBar(),
-        bottomNavigationBar: _BottomNavigation(
-          selectedIndex: selectedPageIndex,
-          onTap: (index) {
-            setState(() {
-              selectedPageIndex = index;
-            });
-          },
-        ),
-        body: IndexedStack(
-          index: selectedPageIndex,
-          children: const [
-            MyLibraryScreen(),
-            Scaffold(body: Center(child: Text('explore'))),
-            Scaffold(body: Center(child: Text('cart'))),
-            Scaffold(body: Center(child: Text('community'))),
-          ],
-        ));
+    return WillPopScope(
+      onWillPop: _onWillPop,
+      child: Scaffold(
+          appBar: _buildCustomAppBar(),
+          bottomNavigationBar: _buildCustomBottomNav(),
+          body: IndexedStack(
+            index: selectedPageIndex,
+            children: [
+              Navigator(
+                key: _myLibraryScreenKey,
+                onGenerateRoute: (settings) => MaterialPageRoute(
+                    builder: (context) => const MyLibraryScreen()),
+              ),
+              Navigator(
+                key: _exploreScreenKey,
+                onGenerateRoute: (settings) => MaterialPageRoute(
+                    builder: (context) => const Scaffold(
+                          body: Center(child: Text('explore')),
+                        )),
+              ),
+              Navigator(
+                key: _cartScreenKey,
+                onGenerateRoute: (settings) => MaterialPageRoute(
+                  builder: (context) =>
+                      const Scaffold(body: Center(child: Text('cart'))),
+                ),
+              ),
+              Navigator(
+                key: _communityScreenKey,
+                onGenerateRoute: (settings) => MaterialPageRoute(
+                  builder: (context) =>
+                      const Scaffold(body: Center(child: Text('community'))),
+                ),
+              )
+            ],
+          )),
+    );
   }
 }
 
@@ -110,6 +167,9 @@ class _BottomNavigation extends StatelessWidget {
       ]),
       height: 70.h,
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+        const SizedBox(
+          width: 16,
+        ),
         _BottomNavigationItem(
           iconFileName: 'library.svg',
           activeIconFileName: 'selected_library.svg',
@@ -145,6 +205,9 @@ class _BottomNavigation extends StatelessWidget {
             onTap(communityScreenIndex);
           },
           isActive: communityScreenIndex == selectedIndex,
+        ),
+        const SizedBox(
+          width: 16,
         )
       ]),
     );
@@ -166,26 +229,28 @@ class _BottomNavigationItem extends StatelessWidget {
       required this.isActive});
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SvgPicture.asset(isActive
-              ? 'assets/images/icons/$activeIconFileName'
-              : 'assets/images/icons/$iconFileName'),
-          const SizedBox(
-            height: 4,
-          ),
-          Text(title,
-              style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w500,
-                color: isActive
-                    ? MyColors.primaryTextColor
-                    : MyColors.secondaryTextColor,
-              ))
-        ],
+    return Expanded(
+      child: InkWell(
+        onTap: onTap,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SvgPicture.asset(isActive
+                ? 'assets/images/icons/$activeIconFileName'
+                : 'assets/images/icons/$iconFileName'),
+            const SizedBox(
+              height: 4,
+            ),
+            Text(title,
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500,
+                  color: isActive
+                      ? MyColors.primaryTextColor
+                      : MyColors.secondaryTextColor,
+                ))
+          ],
+        ),
       ),
     );
   }
