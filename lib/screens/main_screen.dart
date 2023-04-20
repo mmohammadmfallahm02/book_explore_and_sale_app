@@ -1,5 +1,6 @@
 import 'package:book_explore_and_sale_app/common/constants/dimens.dart';
 import 'package:book_explore_and_sale_app/gen/assets.gen.dart';
+import 'package:book_explore_and_sale_app/screens/explore_screen.dart';
 import 'package:book_explore_and_sale_app/screens/my_library_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -135,9 +136,7 @@ class _MainScreenState extends State<MainScreen> {
                   key: _myLibraryScreenKey,
                   index: myLibraryScreenIndex),
               _navigator(
-                  child: const Scaffold(
-                    body: Center(child: Text('explore')),
-                  ),
+                  child: const ExploreScreen(),
                   key: _exploreScreenKey,
                   index: exploreScreenIndex),
               _navigator(
