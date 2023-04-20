@@ -24,14 +24,12 @@ class _PosterWidgetState extends State<PosterWidget> {
             itemCount: widget.posters.length,
             itemBuilder: (context, index, realIndex) {
               final poster = widget.posters[index];
-              return Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
-                child: _Poster(poster: poster),
-              );
+              return _Poster(poster: poster);
             },
             options: CarouselOptions(
                 autoPlayAnimationDuration: const Duration(seconds: 2),
                 enableInfiniteScroll: true,
+                reverse: false,
                 height: 150,
                 onPageChanged: (index, reason) {
                   setState(() {
@@ -72,45 +70,48 @@ class _Poster extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
-    return Stack(
-      children: [
-        ClipRRect(
-          borderRadius: const BorderRadius.all(Radius.circular(10)),
-          child: Image.asset(
-            poster.path,
-            fit: BoxFit.cover,
-            height: 150.h,
-            width: 350.w,
+    return Padding(
+      padding: const EdgeInsets.only(left: 20, right: 20),
+      child: Stack(
+        children: [
+          ClipRRect(
+            borderRadius: const BorderRadius.all(Radius.circular(10)),
+            child: Image.asset(
+              poster.path,
+              fit: BoxFit.cover,
+              height: 150.h,
+              width: 350.w,
+            ),
           ),
-        ),
-        Positioned(
-            left: 8.w,
-            top: 14.h,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  poster.title,
-                  style: themeData.textTheme.headline6!.copyWith(
-                      fontWeight: FontWeight.w600, color: Colors.white),
-                ),
-                const SizedBox(
-                  height: 9,
-                ),
-                Container(
-                  width: 62.w,
-                  height: 26.h,
-                  alignment: Alignment.center,
-                  decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(5)),
-                      color: Colors.white),
-                  child: Text('Explore',
-                      style: themeData.textTheme.subtitle2!.apply(
-                          color: MyExclusiveColors.posterButtonTextColor)),
-                ),
-              ],
-            ))
-      ],
+          Positioned(
+              left: 8.w,
+              top: 14.h,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    poster.title,
+                    style: themeData.textTheme.headline6!.copyWith(
+                        fontWeight: FontWeight.w600, color: Colors.white),
+                  ),
+                  const SizedBox(
+                    height: 9,
+                  ),
+                  Container(
+                    width: 62.w,
+                    height: 26.h,
+                    alignment: Alignment.center,
+                    decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(5)),
+                        color: Colors.white),
+                    child: Text('Explore',
+                        style: themeData.textTheme.subtitle2!.apply(
+                            color: MyExclusiveColors.posterButtonTextColor)),
+                  ),
+                ],
+              ))
+        ],
+      ),
     );
   }
 }

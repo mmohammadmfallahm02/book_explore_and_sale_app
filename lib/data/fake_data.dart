@@ -27,4 +27,17 @@ By looking at the real world around us,\n we're better equipped to understand ou
           '''15 Fall Books You Should Read\n Based On Your Favorite TV Shows and Movies''',
     ),
   ];
+
+  static List<String> categories = [
+    'Arts',
+    'Biography',
+    'Romance',
+    'Thriller',
+    'Fiction',
+    'Crime',
+    'Movies',
+    'Religious',
+    'Philosophy',
+    'History'
+  ];
 }
