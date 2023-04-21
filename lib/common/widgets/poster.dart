@@ -27,9 +27,10 @@ class _PosterWidgetState extends State<PosterWidget> {
               return _Poster(poster: poster);
             },
             options: CarouselOptions(
-                autoPlayAnimationDuration: const Duration(seconds: 2),
                 enableInfiniteScroll: true,
                 reverse: false,
+                autoPlayInterval: Duration(seconds: 3),
+                autoPlayAnimationDuration: Duration(milliseconds: 800),
                 height: 150,
                 onPageChanged: (index, reason) {
                   setState(() {
