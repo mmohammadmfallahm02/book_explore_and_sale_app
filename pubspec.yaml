@@ -40,7 +40,6 @@ dependencies:
   percent_indicator: ^4.2.3
   skeletons: ^0.0.3
   cached_network_image: ^3.2.3
-  get: ^4.6.5
   flutter_screenutil: ^5.7.0
   flutter_svg: ^1.1.6
   carousel_slider: ^4.2.1

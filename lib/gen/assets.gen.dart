@@ -8,54 +8,69 @@
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/services.dart';
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
   $AssetsImagesIconsGen get icons => const $AssetsImagesIconsGen();
+  $AssetsImagesImagesGen get images => const $AssetsImagesImagesGen();
 }
 
 class $AssetsImagesIconsGen {
   const $AssetsImagesIconsGen();
 
+  /// File path: assets/images/icons/back.svg
+  SvgGenImage get back => const SvgGenImage('assets/images/icons/back.svg');
+
   /// File path: assets/images/icons/cart.svg
-  String get cart => 'assets/images/icons/cart.svg';
+  SvgGenImage get cart => const SvgGenImage('assets/images/icons/cart.svg');
 
   /// File path: assets/images/icons/community.svg
-  String get community => 'assets/images/icons/community.svg';
+  SvgGenImage get community =>
+      const SvgGenImage('assets/images/icons/community.svg');
 
   /// File path: assets/images/icons/explore.svg
-  String get explore => 'assets/images/icons/explore.svg';
+  SvgGenImage get explore =>
+      const SvgGenImage('assets/images/icons/explore.svg');
 
   /// File path: assets/images/icons/library.svg
-  String get library => 'assets/images/icons/library.svg';
+  SvgGenImage get library =>
+      const SvgGenImage('assets/images/icons/library.svg');
 
   /// File path: assets/images/icons/menu.svg
-  String get menu => 'assets/images/icons/menu.svg';
+  SvgGenImage get menu => const SvgGenImage('assets/images/icons/menu.svg');
 
   /// File path: assets/images/icons/notification.svg
-  String get notification => 'assets/images/icons/notification.svg';
+  SvgGenImage get notification =>
+      const SvgGenImage('assets/images/icons/notification.svg');
 
   /// File path: assets/images/icons/scan.svg
-  String get scan => 'assets/images/icons/scan.svg';
+  SvgGenImage get scan => const SvgGenImage('assets/images/icons/scan.svg');
 
   /// File path: assets/images/icons/search.svg
-  String get search => 'assets/images/icons/search.svg';
+  SvgGenImage get search => const SvgGenImage('assets/images/icons/search.svg');
 
   /// File path: assets/images/icons/selected_cart.svg
-  String get selectedCart => 'assets/images/icons/selected_cart.svg';
+  SvgGenImage get selectedCart =>
+      const SvgGenImage('assets/images/icons/selected_cart.svg');
 
   /// File path: assets/images/icons/selected_community.svg
-  String get selectedCommunity => 'assets/images/icons/selected_community.svg';
+  SvgGenImage get selectedCommunity =>
+      const SvgGenImage('assets/images/icons/selected_community.svg');
 
   /// File path: assets/images/icons/selected_explore.svg
-  String get selectedExplore => 'assets/images/icons/selected_explore.svg';
+  SvgGenImage get selectedExplore =>
+      const SvgGenImage('assets/images/icons/selected_explore.svg');
 
   /// File path: assets/images/icons/selected_library.svg
-  String get selectedLibrary => 'assets/images/icons/selected_library.svg';
+  SvgGenImage get selectedLibrary =>
+      const SvgGenImage('assets/images/icons/selected_library.svg');
 
   /// List of all assets
-  List<String> get values => [
+  List<SvgGenImage> get values => [
+        back,
         cart,
         community,
         explore,
@@ -69,6 +84,30 @@ class $AssetsImagesIconsGen {
         selectedExplore,
         selectedLibrary
       ];
+}
+
+class $AssetsImagesImagesGen {
+  const $AssetsImagesImagesGen();
+
+  /// File path: assets/images/images/poster_image_01.jpg
+  AssetGenImage get posterImage01 =>
+      const AssetGenImage('assets/images/images/poster_image_01.jpg');
+
+  /// File path: assets/images/images/poster_image_02.jpg
+  AssetGenImage get posterImage02 =>
+      const AssetGenImage('assets/images/images/poster_image_02.jpg');
+
+  /// File path: assets/images/images/poster_image_03.jpg
+  AssetGenImage get posterImage03 =>
+      const AssetGenImage('assets/images/images/poster_image_03.jpg');
+
+  /// File path: assets/images/images/poster_image_04.jpg
+  AssetGenImage get posterImage04 =>
+      const AssetGenImage('assets/images/images/poster_image_04.jpg');
+
+  /// List of all assets
+  List<AssetGenImage> get values =>
+      [posterImage01, posterImage02, posterImage03, posterImage04];
 }
 
 class Assets {
@@ -135,7 +174,69 @@ class AssetGenImage {
     );
   }
 
-  ImageProvider provider() => AssetImage(_assetName);
+  ImageProvider provider({
+    AssetBundle? bundle,
+    String? package,
+  }) {
+    return AssetImage(
+      _assetName,
+      bundle: bundle,
+      package: package,
+    );
+  }
+
+  String get path => _assetName;
+
+  String get keyName => _assetName;
+}
+
+class SvgGenImage {
+  const SvgGenImage(this._assetName);
+
+  final String _assetName;
+
+  SvgPicture svg({
+    Key? key,
+    bool matchTextDirection = false,
+    AssetBundle? bundle,
+    String? package,
+    double? width,
+    double? height,
+    BoxFit fit = BoxFit.contain,
+    AlignmentGeometry alignment = Alignment.center,
+    bool allowDrawingOutsideViewBox = false,
+    WidgetBuilder? placeholderBuilder,
+    String? semanticsLabel,
+    bool excludeFromSemantics = false,
+    SvgTheme theme = const SvgTheme(),
+    ColorFilter? colorFilter,
+    Clip clipBehavior = Clip.hardEdge,
+    @deprecated Color? color,
+    @deprecated BlendMode colorBlendMode = BlendMode.srcIn,
+    @deprecated bool cacheColorFilter = false,
+  }) {
+    return SvgPicture.asset(
+      _assetName,
+      key: key,
+      matchTextDirection: matchTextDirection,
+      bundle: bundle,
+      package: package,
+      width: width,
+      height: height,
+      fit: fit,
+      alignment: alignment,
+      allowDrawingOutsideViewBox: allowDrawingOutsideViewBox,
+      placeholderBuilder: placeholderBuilder,
+      semanticsLabel: semanticsLabel,
+      excludeFromSemantics: excludeFromSemantics,
+      theme: theme,
+      // colorFilter: colorFilter,
+      color: color,
+      colorBlendMode: colorBlendMode,
+      clipBehavior: clipBehavior,
+      cacheColorFilter: cacheColorFilter,
+    );
+  }
 
   String get path => _assetName;
 

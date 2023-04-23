@@ -1,8 +1,7 @@
-import 'package:book_explore_and_sale_app/common/routes/app_routes.dart';
+import 'package:book_explore_and_sale_app/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'common/theme/theme.dart';
 
 void main() {
@@ -22,10 +21,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
         designSize: const Size(360, 780),
-        builder: (context, child) => GetMaterialApp(
+        builder: (context, child) => MaterialApp(
               debugShowCheckedModeBanner: false,
               title: 'Flutter Demo',
-              getPages: AppRoutes.listRoute,
+              home: MainScreen(key: key),
               theme: MyAppThemeConfig.themeConfig(),
             ));
   }

@@ -1,5 +1,3 @@
-import 'package:book_explore_and_sale_app/common/constants/dimens.dart';
-import 'package:book_explore_and_sale_app/gen/assets.gen.dart';
 import 'package:book_explore_and_sale_app/screens/explore_screen.dart';
 import 'package:book_explore_and_sale_app/screens/my_library_screen.dart';
 import 'package:flutter/material.dart';
@@ -33,53 +31,6 @@ class _MainScreenState extends State<MainScreen> {
     cartScreenIndex: _cartScreenKey,
     communityScreenIndex: _communityScreenKey,
   };
-  PreferredSize _buildCustomAppBar() {
-    return PreferredSize(
-      preferredSize: const Size.fromHeight(46),
-      child: SafeArea(
-          child: Padding(
-        padding: EdgeInsets.fromLTRB(
-            MyDimens.bodyMargin, 10, MyDimens.bodyMargin, 0),
-        child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SvgPicture.asset(Assets.images.icons.menu,
-                  width: 24.w, height: 24.w),
-              const SizedBox(
-                width: 13,
-              ),
-              Container(
-                  width: 200.w,
-                  height: 36.w,
-                  alignment: Alignment.centerRight,
-                  padding: EdgeInsets.only(right: 12.w),
-                  decoration: BoxDecoration(
-                    color: MyExclusiveColors.searchBarColor,
-                    borderRadius: BorderRadius.all(Radius.circular(15.w)),
-                  ),
-                  child: SvgPicture.asset(Assets.images.icons.search,
-                      width: 24.w, height: 24.w)),
-              const SizedBox(
-                width: 23,
-              ),
-              SvgPicture.asset(
-                Assets.images.icons.scan,
-                width: 28.w,
-                height: 28.w,
-              ),
-              const SizedBox(
-                width: 8,
-              ),
-              SvgPicture.asset(
-                Assets.images.icons.notification,
-                width: 24.w,
-                height: 24.w,
-              ),
-            ]),
-      )),
-    );
-  }
 
   Widget _buildCustomBottomNav() {
     return _BottomNavigation(
@@ -126,7 +77,10 @@ class _MainScreenState extends State<MainScreen> {
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
-          appBar: _buildCustomAppBar(),
+          // appBar: const PreferredSize(
+          //   preferredSize: Size.fromHeight(46),
+          //   child: AppBarWidget(),
+          // ),
           bottomNavigationBar: _buildCustomBottomNav(),
           body: IndexedStack(
             index: selectedPageIndex,

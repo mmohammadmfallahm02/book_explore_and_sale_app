@@ -1,4 +1,3 @@
-import 'package:book_explore_and_sale_app/common/constants/constants.dart';
 import 'package:book_explore_and_sale_app/common/theme/colors.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -29,8 +28,8 @@ class _PosterWidgetState extends State<PosterWidget> {
             options: CarouselOptions(
                 enableInfiniteScroll: true,
                 reverse: false,
-                autoPlayInterval: Duration(seconds: 3),
-                autoPlayAnimationDuration: Duration(milliseconds: 800),
+                autoPlayInterval: const Duration(seconds: 3),
+                autoPlayAnimationDuration: const Duration(milliseconds: 800),
                 height: 150,
                 onPageChanged: (index, reason) {
                   setState(() {

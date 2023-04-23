@@ -1,6 +1,7 @@
 import 'package:book_explore_and_sale_app/common/constants/constants.dart';
 import 'package:book_explore_and_sale_app/common/theme/colors.dart';
 import 'package:book_explore_and_sale_app/models/models.dart';
+import 'package:book_explore_and_sale_app/screens/book_page_screen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -9,7 +10,9 @@ import '../common/widgets/widgets.dart';
 import '../data/data.dart';
 
 class ExploreScreen extends StatelessWidget {
-  const ExploreScreen({super.key});
+  const ExploreScreen({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +22,10 @@ class ExploreScreen extends StatelessWidget {
     final List<BookEntity> books = FakeData.books;
 
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(46),
+        child: AppBarWidget(key: key),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -131,32 +138,39 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
   }
 
   Widget _buildGridBookItemWidget(BookEntity book) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        ClipRRect(
-            borderRadius: const BorderRadius.all(Radius.circular(5)),
-            child: CachedNetworkImage(
-              imageUrl: book.imageUrl,
-              fit: BoxFit.cover,
-              height: 130.h,
-              width: 100.h,
-            )),
-        const SizedBox(
-          height: 2,
-        ),
-        Expanded(
-          child: Text(
-            book.title,
-            style: widget.themeData.textTheme.subtitle1,
+    return InkWell(
+      borderRadius: const BorderRadius.all(Radius.circular(5)),
+      onTap: () {
+        Navigator.of(context, rootNavigator: false).push(
+            MaterialPageRoute(builder: (context) => const BookPageScreen()));
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ClipRRect(
+              borderRadius: const BorderRadius.all(Radius.circular(5)),
+              child: CachedNetworkImage(
+                imageUrl: book.imageUrl,
+                fit: BoxFit.cover,
+                height: 130.h,
+                width: 100.h,
+              )),
+          const SizedBox(
+            height: 2,
           ),
-        ),
-        Text(
-          book.author,
-          style: widget.themeData.textTheme.caption,
-        ),
-        _buildStarWidget(book),
-      ],
+          Expanded(
+            child: Text(
+              book.title,
+              style: widget.themeData.textTheme.subtitle1,
+            ),
+          ),
+          Text(
+            book.author,
+            style: widget.themeData.textTheme.caption,
+          ),
+          _buildStarWidget(book),
+        ],
+      ),
     );
   }
 
