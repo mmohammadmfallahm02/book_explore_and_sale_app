@@ -141,8 +141,10 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
     return InkWell(
       borderRadius: const BorderRadius.all(Radius.circular(5)),
       onTap: () {
-        Navigator.of(context, rootNavigator: false).push(
-            MaterialPageRoute(builder: (context) => const BookPageScreen()));
+        Navigator.of(context, rootNavigator: false).push(MaterialPageRoute(
+            builder: (context) => BookPageScreen(
+                  book: book,
+                )));
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

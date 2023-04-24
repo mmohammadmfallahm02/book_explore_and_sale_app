@@ -1,5 +1,6 @@
 class BookEntity {
   final int id;
+  final String poster;
   final String title;
   final String author;
   final String imageUrl;
@@ -10,6 +11,7 @@ class BookEntity {
 
   BookEntity(
       {required this.id,
+      required this.poster,
       required this.title,
       required this.author,
       required this.imageUrl,
