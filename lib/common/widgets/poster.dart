@@ -1,4 +1,5 @@
 import 'package:book_explore_and_sale_app/common/theme/colors.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,7 +29,7 @@ class _PosterWidgetState extends State<PosterWidget> {
             options: CarouselOptions(
                 enableInfiniteScroll: true,
                 reverse: false,
-                autoPlayInterval: const Duration(seconds: 3),
+                autoPlayInterval: const Duration(seconds: 7),
                 autoPlayAnimationDuration: const Duration(milliseconds: 800),
                 height: 150,
                 onPageChanged: (index, reason) {
@@ -76,12 +77,19 @@ class _Poster extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: const BorderRadius.all(Radius.circular(10)),
-            child: Image.asset(
-              poster.path,
-              fit: BoxFit.cover,
-              height: 150.h,
-              width: 350.w,
-            ),
+            child: poster.title != ''
+                ? Image.asset(
+                    poster.path,
+                    fit: BoxFit.cover,
+                    height: 150.h,
+                    width: 350.w,
+                  )
+                : CachedNetworkImage(
+                    imageUrl: poster.path,
+                    fit: BoxFit.cover,
+                    height: 150.h,
+                    width: 350.w,
+                  ),
           ),
           Positioned(
               left: 8.w,
@@ -90,24 +98,28 @@ class _Poster extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    poster.title,
+                    poster.title ?? '',
                     style: themeData.textTheme.headline6!.copyWith(
                         fontWeight: FontWeight.w600, color: Colors.white),
                   ),
                   const SizedBox(
                     height: 9,
                   ),
-                  Container(
-                    width: 62.w,
-                    height: 26.h,
-                    alignment: Alignment.center,
-                    decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(5)),
-                        color: Colors.white),
-                    child: Text('Explore',
-                        style: themeData.textTheme.subtitle2!.apply(
-                            color: MyExclusiveColors.posterButtonTextColor)),
-                  ),
+                  poster.title != ''
+                      ? Container(
+                          width: 62.w,
+                          height: 26.h,
+                          alignment: Alignment.center,
+                          decoration: const BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5)),
+                              color: Colors.white),
+                          child: Text('Explore',
+                              style: themeData.textTheme.subtitle2!.apply(
+                                  color:
+                                      MyExclusiveColors.posterButtonTextColor)),
+                        )
+                      : const SizedBox(),
                 ],
               ))
         ],

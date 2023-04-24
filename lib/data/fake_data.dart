@@ -10,22 +10,19 @@ when you don’t even know what
 to read!!!''',
     ),
     PosterEntity(
-      id: 2,
-      path: 'assets/images/images/poster_image_02.jpg',
-      title: '''19 Works of Nonfiction to Read This Spring''',
-    ),
+        id: 2,
+        path:
+            'https://metro.co.uk/wp-content/uploads/2021/12/PRC_215534003.jpg?quality=90&strip=all&w=1200&h=630&crop=1'),
     PosterEntity(
       id: 3,
-      path: 'assets/images/images/poster_image_03.jpg',
-      title: '''The Best Nonfiction Books of 2018 (So Far)
-By looking at the real world around us,\n we're better equipped to understand ourselves.''',
+      path:
+          'https://elifnotes.com/wp-content/uploads/2021/12/22-of-the-best-books-of-all-time-you-must-read.webp',
     ),
     PosterEntity(
       id: 4,
-      path: 'assets/images/images/poster_image_04.jpg',
-      title:
-          '''15 Fall Books You Should Read\n Based On Your Favorite TV Shows and Movies''',
-    ),
+      path:
+          'https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1500w,f_auto,q_auto:best/newscms/2022_48/1943520/most-anticipated-books-2023-use-2x1-jp-221127.jpg',
+    )
   ];
 
   static List<String> categories = [
@@ -69,7 +66,8 @@ By looking at the real world around us,\n we're better equipped to understand ou
         numberOfRead: 6400),
     BookEntity(
         id: 3,
-        poster: 'https://i0.wp.com/thestackspodcast.com/wp-content/uploads/2020/10/17B98ACB-A05A-4D0F-84FB-E55E6F8F6AF4-4B7B88AA-EAC8-40B7-B8B6-6C42F8DB80BA.jpg?resize=359%2C411&ssl=1',
+        poster:
+            'https://i0.wp.com/thestackspodcast.com/wp-content/uploads/2020/10/17B98ACB-A05A-4D0F-84FB-E55E6F8F6AF4-4B7B88AA-EAC8-40B7-B8B6-6C42F8DB80BA.jpg?resize=359%2C411&ssl=1',
         title: 'Malcolm X',
         author: 'Alex Haley',
         imageUrl:

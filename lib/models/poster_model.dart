@@ -1,12 +1,12 @@
 class PosterEntity {
   final int id;
   final String path;
-  final String title;
+  final String? title;
 
   PosterEntity({
     required this.id,
     required this.path,
-    required this.title,
+     this.title='',
   });
 }
 

@@ -1,5 +1,6 @@
 import 'package:book_explore_and_sale_app/common/constants/constants.dart';
 import 'package:book_explore_and_sale_app/common/theme/colors.dart';
+import 'package:book_explore_and_sale_app/common/utils/utils_file.dart';
 import 'package:book_explore_and_sale_app/gen/assets.gen.dart';
 import 'package:book_explore_and_sale_app/models/book_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -100,7 +101,7 @@ class BookPageScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildStarAndReadBookWidget() {
+  Widget _buildStarAndReadBookWidget(ThemeData themeData) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -114,7 +115,10 @@ class BookPageScreen extends StatelessWidget {
           itemSize: 15.8,
           direction: Axis.horizontal,
         ),
-        Text(' | ${book.numberOfRead}00 Reads'),
+        Text(
+          ' | ${book.numberOfRead.separateByComma} Reads',
+          style: themeData.textTheme.subtitle2!.copyWith(fontSize: 12),
+        ),
         const SizedBox(
           width: 50,
         )
@@ -140,7 +144,7 @@ class BookPageScreen extends StatelessWidget {
           const SizedBox(
             height: 17,
           ),
-          _buildStarAndReadBookWidget()
+          _buildStarAndReadBookWidget(themeData)
         ]),
       ),
     );
