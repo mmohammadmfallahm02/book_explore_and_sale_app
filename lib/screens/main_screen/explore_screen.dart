@@ -6,8 +6,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../common/widgets/widgets.dart';
-import '../data/data.dart';
+import '../../common/widgets/widgets.dart';
+import '../../data/data.dart';
 
 class ExploreScreen extends StatelessWidget {
   const ExploreScreen({

@@ -1,9 +1,9 @@
-import 'package:book_explore_and_sale_app/screens/explore_screen.dart';
-import 'package:book_explore_and_sale_app/screens/my_library_screen.dart';
+import 'package:book_explore_and_sale_app/screens/main_screen/explore_screen.dart';
+import 'package:book_explore_and_sale_app/screens/main_screen/my_library_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../common/theme/theme.dart';
+import '../../common/theme/theme.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});

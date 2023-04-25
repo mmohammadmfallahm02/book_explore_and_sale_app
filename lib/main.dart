@@ -1,4 +1,4 @@
-import 'package:book_explore_and_sale_app/screens/main_screen.dart';
+import 'package:book_explore_and_sale_app/screens/main_screen/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
