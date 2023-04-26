@@ -46,6 +46,9 @@ class $AssetsImagesIconsGen {
   SvgGenImage get notification =>
       const SvgGenImage('assets/images/icons/notification.svg');
 
+  /// File path: assets/images/icons/plus.svg
+  SvgGenImage get plus => const SvgGenImage('assets/images/icons/plus.svg');
+
   /// File path: assets/images/icons/scan.svg
   SvgGenImage get scan => const SvgGenImage('assets/images/icons/scan.svg');
 
@@ -77,6 +80,7 @@ class $AssetsImagesIconsGen {
         library,
         menu,
         notification,
+        plus,
         scan,
         search,
         selectedCart,
@@ -88,6 +92,14 @@ class $AssetsImagesIconsGen {
 
 class $AssetsImagesImagesGen {
   const $AssetsImagesImagesGen();
+
+  /// File path: assets/images/images/Book_01.png
+  AssetGenImage get book01 =>
+      const AssetGenImage('assets/images/images/Book_01.png');
+
+  /// File path: assets/images/images/Book_02.png
+  AssetGenImage get book02 =>
+      const AssetGenImage('assets/images/images/Book_02.png');
 
   /// File path: assets/images/images/poster_image_01.jpg
   AssetGenImage get posterImage01 =>
@@ -106,8 +118,14 @@ class $AssetsImagesImagesGen {
       const AssetGenImage('assets/images/images/poster_image_04.jpg');
 
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [posterImage01, posterImage02, posterImage03, posterImage04];
+  List<AssetGenImage> get values => [
+        book01,
+        book02,
+        posterImage01,
+        posterImage02,
+        posterImage03,
+        posterImage04
+      ];
 }
 
 class Assets {

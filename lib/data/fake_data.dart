@@ -38,7 +38,7 @@ to read!!!''',
     'History'
   ];
 
-  static List<BookEntity> books = [
+  static List<BookEntity> booksCategoryList = [
     BookEntity(
         id: 1,
         poster: 'https://m.media-amazon.com/images/I/81L2TrpKNJL.jpg',
@@ -114,5 +114,20 @@ to read!!!''',
         star: 4.3,
         price: 19.00,
         numberOfRead: 11000),
+  ];
+
+  static List<CurrentBookEntity> currentReadingList = [
+    CurrentBookEntity(
+      id: 0,
+      title: 'Afterlife',
+      imageUrl: 'assets/images/images/Book_01.png',
+      readingPercent: 100,
+    ),
+    CurrentBookEntity(
+      id: 1,
+      title: 'Ghost Boys',
+      imageUrl: 'assets/images/images/Book_02.png',
+      readingPercent: 60,
+    ),
   ];
 }

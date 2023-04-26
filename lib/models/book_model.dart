@@ -20,3 +20,16 @@ class BookEntity {
       required this.price,
       required this.numberOfRead});
 }
+
+class CurrentBookEntity {
+  final int id;
+  final String title;
+  final String imageUrl;
+  final num readingPercent;
+
+  CurrentBookEntity(
+      {required this.id,
+      required this.title,
+      required this.imageUrl,
+      required this.readingPercent});
+}

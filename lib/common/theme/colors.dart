@@ -13,6 +13,8 @@ abstract class MyExclusiveColors {
   static const searchBarColor = Color(0xffF6F5FA);
   static const inActiveDotIndicatorColor = Color(0xffD9D9D9);
   static const posterButtonTextColor = Color(0xffF89182);
+  static const discoverMoreButtonColor = Color(0xff656B8C);
+
 }
 
 abstract class MyGradient {

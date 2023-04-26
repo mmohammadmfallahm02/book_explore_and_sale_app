@@ -1,7 +1,6 @@
 import 'package:book_explore_and_sale_app/common/constants/constants.dart';
 import 'package:book_explore_and_sale_app/common/theme/colors.dart';
 import 'package:book_explore_and_sale_app/common/utils/utils.dart';
-
 import 'package:book_explore_and_sale_app/gen/assets.gen.dart';
 import 'package:book_explore_and_sale_app/models/book_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -10,9 +9,16 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class BookPageScreen extends StatelessWidget {
+class BookPageScreen extends StatefulWidget {
   final BookEntity book;
   const BookPageScreen({super.key, required this.book});
+
+  @override
+  State<BookPageScreen> createState() => _BookPageScreenState();
+}
+
+class _BookPageScreenState extends State<BookPageScreen> {
+  final GlobalKey<ScaffoldMessengerState> scaffoldKey = GlobalKey();
 
   PreferredSize _buildCustomAppBar(BuildContext context, ThemeData themeData) {
     return PreferredSize(
@@ -51,7 +57,7 @@ class BookPageScreen extends StatelessWidget {
 
   Widget _buildPosterWidget() {
     return CachedNetworkImage(
-      imageUrl: book.poster,
+      imageUrl: widget.book.poster,
       height: 212.h,
       fit: BoxFit.cover,
       width: 348.w,
@@ -65,7 +71,7 @@ class BookPageScreen extends StatelessWidget {
         ClipRRect(
             borderRadius: BorderRadius.all(Radius.circular(50.w)),
             child: CachedNetworkImage(
-              imageUrl: book.authorImageUrl,
+              imageUrl: widget.book.authorImageUrl,
               fit: BoxFit.cover,
               height: 48.w,
               width: 48.w,
@@ -78,7 +84,7 @@ class BookPageScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                book.title,
+                widget.book.title,
                 style: themeData.textTheme.headline4!
                     .copyWith(fontWeight: FontWeight.w700),
               ),
@@ -86,7 +92,7 @@ class BookPageScreen extends StatelessWidget {
                 height: 4.h,
               ),
               Text(
-                'By ${book.author}',
+                'By ${widget.book.author}',
                 style:
                     themeData.textTheme.bodyText2!.apply(color: Colors.black),
               )
@@ -94,7 +100,7 @@ class BookPageScreen extends StatelessWidget {
           ),
         ),
         Text(
-          '\$${book.price}0',
+          '\$${widget.book.price}0',
           style: themeData.textTheme.headline4!.copyWith(
               fontWeight: FontWeight.w700, color: MyColors.primaryColor),
         )
@@ -107,7 +113,7 @@ class BookPageScreen extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         RatingBarIndicator(
-          rating: book.star,
+          rating: widget.book.star,
           itemBuilder: (context, index) => const Icon(
             Icons.star,
             color: MyColors.primaryColor,
@@ -117,7 +123,7 @@ class BookPageScreen extends StatelessWidget {
           direction: Axis.horizontal,
         ),
         Text(
-          ' | ${book.numberOfRead.separateByComma} Reads',
+          ' | ${widget.book.numberOfRead.separateByComma} Reads',
           style: themeData.textTheme.subtitle2!.copyWith(fontSize: 12),
         ),
         const SizedBox(
@@ -131,86 +137,98 @@ class BookPageScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
 
-    return Scaffold(
-      floatingActionButton: SizedBox(
-          height: 35.h,
-          width: 149.w,
-          child: FloatingActionButton.extended(
-              shape: const BeveledRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(5))),
-              onPressed: () {},
-              label: Row(
-                children: [
-                  const Text('Add to Cart'),
-                  const SizedBox(
-                    width: 8,
-                  ),
-                  SvgPicture.asset(
-                    Assets.images.icons.cart.path,
-                    width: 15,
-                    height: 15,
-                    color: Colors.white,
-                  )
-                ],
-              ))),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      appBar: _buildCustomAppBar(context, themeData),
-      body: Padding(
-        padding: EdgeInsets.fromLTRB(
-            MyDimens.bodyMargin, 31, MyDimens.bodyMargin, 0),
-        child: Stack(
-          children: [
-            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              _buildPosterWidget(),
-              const SizedBox(
-                height: 22,
-              ),
-              _buildMainInfoWidget(themeData),
-              const SizedBox(
-                height: 17,
-              ),
-              _buildStarAndReadBookWidget(themeData),
-              const SizedBox(
-                height: 32,
-              ),
-              const DetailsBookItemWidget(),
-              const SizedBox(
-                height: 17,
-              ),
-              Expanded(
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.vertical,
-                  child: Column(
-                    children:const [
-                       Text(
-                        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-                        style: TextStyle(height: 1.5),
-                      ),
-                      SizedBox(
-                        height: 130,
-                      ),
-                    ],
+    return ScaffoldMessenger(
+      key: scaffoldKey,
+      child: Scaffold(
+        floatingActionButton: SizedBox(
+            height: 35.h,
+            width: 149.w,
+            child: FloatingActionButton.extended(
+                shape: const BeveledRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(5))),
+                onPressed: () {
+                  scaffoldKey.currentState!.showSnackBar(const SnackBar(
+                      content: Text('Add to Cart button is clicked')));
+                },
+                label: Row(
+                  children: [
+                    const Text('Add to Cart'),
+                    const SizedBox(
+                      width: 8,
+                    ),
+                    SvgPicture.asset(
+                      Assets.images.icons.cart.path,
+                      width: 15,
+                      height: 15,
+                      color: Colors.white,
+                    )
+                  ],
+                ))),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        appBar: _buildCustomAppBar(context, themeData),
+        body: Padding(
+          padding: EdgeInsets.fromLTRB(
+              MyDimens.bodyMargin, 31, MyDimens.bodyMargin, 0),
+          child: Stack(
+            children: [
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                _buildPosterWidget(),
+                const SizedBox(
+                  height: 22,
+                ),
+                _buildMainInfoWidget(themeData),
+                const SizedBox(
+                  height: 17,
+                ),
+                _buildStarAndReadBookWidget(themeData),
+                const SizedBox(
+                  height: 32,
+                ),
+                const DetailsBookItemWidget(),
+                const SizedBox(
+                  height: 17,
+                ),
+                Expanded(
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Column(
+                      children: const [
+                        Text(
+                          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+                          style: TextStyle(height: 1.5),
+                        ),
+                        SizedBox(
+                          height: 130,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ]),
-            Positioned(
-                bottom: 0,
-                right: 0,
-                left: 0,
-                child: Container(
-                  height: 141,
-                  width: double.infinity,
-                  decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                          colors: MyGradient.bookPageDetailsGradient,
-                          begin: Alignment.bottomCenter,
-                          end: Alignment.topCenter)),
-                ))
-          ],
+              ]),
+              Positioned(
+                  bottom: 0,
+                  right: 0,
+                  left: 0,
+                  child: Container(
+                    height: 141,
+                    width: double.infinity,
+                    decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                            colors: MyGradient.bookPageDetailsGradient,
+                            begin: Alignment.bottomCenter,
+                            end: Alignment.topCenter)),
+                  ))
+            ],
+          ),
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    scaffoldKey.currentState?.dispose();
+    super.dispose();
   }
 }
 

@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 class MyAppThemeConfig {
   static ThemeData themeConfig() {
     return ThemeData(
+      snackBarTheme: SnackBarThemeData(contentTextStyle: GoogleFonts.urbanist(),),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
           extendedTextStyle: TextStyle(
               fontWeight: FontWeight.w700, fontSize: 12, color: Colors.white),

@@ -19,7 +19,7 @@ class ExploreScreen extends StatelessWidget {
     final ThemeData themeData = Theme.of(context);
     final List<PosterEntity> posters = FakeData.posters;
     final List<String> categories = FakeData.categories;
-    final List<BookEntity> books = FakeData.books;
+    final List<BookEntity> books = FakeData.booksCategoryList;
 
     return Scaffold(
       appBar: PreferredSize(
