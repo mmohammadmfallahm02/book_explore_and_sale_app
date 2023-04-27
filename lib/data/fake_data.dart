@@ -1,3 +1,4 @@
+import 'package:book_explore_and_sale_app/gen/assets.gen.dart';
 import 'package:book_explore_and_sale_app/models/models.dart';
 
 class FakeData {
@@ -129,5 +130,68 @@ to read!!!''',
       imageUrl: 'assets/images/images/Book_02.png',
       readingPercent: 60,
     ),
+  ];
+
+  static List<BookEntity> myWishlistBook = [
+    BookEntity(
+        id: 1,
+        poster: '',
+        title: 'Good Company',
+        author: 'Cynthia D.S',
+        imageUrl: Assets.images.images.myWishlistBook01.path,
+        authorImageUrl: '',
+        star: 4,
+        price: 0,
+        numberOfRead: 0),
+    BookEntity(
+        id: 2,
+        poster: '',
+        title: 'Book Lovers',
+        author: 'Emily Henry',
+        imageUrl: Assets.images.images.myWishlistBook02.path,
+        authorImageUrl: '',
+        star: 2.1,
+        price: 0,
+        numberOfRead: 0),
+    BookEntity(
+        id: 3,
+        poster: '',
+        title: 'Leaving Time',
+        author: 'Jodi Picoult',
+        imageUrl: Assets.images.images.myWishlistBook03.path,
+        authorImageUrl: '',
+        star: 4.4,
+        price: 0,
+        numberOfRead: 0),
+    BookEntity(
+        id: 4,
+        poster: '',
+        title: 'Silent Scream ',
+        author: 'Angela Marsons',
+        imageUrl: Assets.images.images.myWishlistBook04.path,
+        authorImageUrl: '',
+        star: 4,
+        price: 0,
+        numberOfRead: 0),
+    BookEntity(
+        id: 5,
+        poster: '',
+        title: 'The Kite Runner',
+        author: 'Khaled Hosseini',
+        imageUrl: Assets.images.images.myWishlistBook05.path,
+        authorImageUrl: '',
+        star: 5,
+        price: 0,
+        numberOfRead: 0),
+    BookEntity(
+        id: 6,
+        poster: '',
+        title: 'Father of the Rain',
+        author: 'Lily King',
+        imageUrl: Assets.images.images.myWishlistBook06.path,
+        authorImageUrl: '',
+        star: 5,
+        price: 0,
+        numberOfRead: 0),
   ];
 }

@@ -101,6 +101,30 @@ class $AssetsImagesImagesGen {
   AssetGenImage get book02 =>
       const AssetGenImage('assets/images/images/Book_02.png');
 
+  /// File path: assets/images/images/my_wishlist_book_01.png
+  AssetGenImage get myWishlistBook01 =>
+      const AssetGenImage('assets/images/images/my_wishlist_book_01.png');
+
+  /// File path: assets/images/images/my_wishlist_book_02.png
+  AssetGenImage get myWishlistBook02 =>
+      const AssetGenImage('assets/images/images/my_wishlist_book_02.png');
+
+  /// File path: assets/images/images/my_wishlist_book_03.png
+  AssetGenImage get myWishlistBook03 =>
+      const AssetGenImage('assets/images/images/my_wishlist_book_03.png');
+
+  /// File path: assets/images/images/my_wishlist_book_04.png
+  AssetGenImage get myWishlistBook04 =>
+      const AssetGenImage('assets/images/images/my_wishlist_book_04.png');
+
+  /// File path: assets/images/images/my_wishlist_book_05.png
+  AssetGenImage get myWishlistBook05 =>
+      const AssetGenImage('assets/images/images/my_wishlist_book_05.png');
+
+  /// File path: assets/images/images/my_wishlist_book_06.png
+  AssetGenImage get myWishlistBook06 =>
+      const AssetGenImage('assets/images/images/my_wishlist_book_06.png');
+
   /// File path: assets/images/images/poster_image_01.jpg
   AssetGenImage get posterImage01 =>
       const AssetGenImage('assets/images/images/poster_image_01.jpg');
@@ -121,6 +145,12 @@ class $AssetsImagesImagesGen {
   List<AssetGenImage> get values => [
         book01,
         book02,
+        myWishlistBook01,
+        myWishlistBook02,
+        myWishlistBook03,
+        myWishlistBook04,
+        myWishlistBook05,
+        myWishlistBook06,
         posterImage01,
         posterImage02,
         posterImage03,
