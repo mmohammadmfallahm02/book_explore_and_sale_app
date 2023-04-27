@@ -160,7 +160,7 @@ class MyLibraryScreen extends StatelessWidget {
 
   Widget _buildTitleAndSeeMoreWidget(ThemeData themeData) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(20,32,20,0),
+      padding: const EdgeInsets.fromLTRB(20, 32, 20, 0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -193,7 +193,7 @@ class MyLibraryScreen extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
         padding: EdgeInsets.fromLTRB(
-            MyDimens.bodyMargin*1.3, 15, MyDimens.bodyMargin*1.1, 0),
+            MyDimens.bodyMargin * 1.3, 15, MyDimens.bodyMargin * 1.1, 0),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             crossAxisSpacing: 7,
@@ -232,8 +232,14 @@ class MyLibraryScreen extends StatelessWidget {
               style: themeData.textTheme.subtitle2!
                   .apply(color: MyColors.primaryTextColor),
             ),
-            SizedBox(height: 3,),
-            Expanded(child: Text(book.author,)),
+            const SizedBox(
+              height: 3,
+            ),
+            Expanded(
+                child: Text(
+              book.author,
+             style: themeData.textTheme.subtitle2
+            )),
             RatingBarIndicator(
               rating: book.star,
               itemBuilder: (context, index) => const Icon(
@@ -271,7 +277,10 @@ class MyLibraryScreen extends StatelessWidget {
               _buildTitleWidget(themeData),
               _buildCurrentReadingBookListWidget(currentReadingList, themeData),
               _buildTitleAndSeeMoreWidget(themeData),
-              _buildMyWishlistWidget(myWishListBooks, themeData)
+              _buildMyWishlistWidget(myWishListBooks, themeData),
+              const SizedBox(
+                height: 30,
+              )
             ],
           ),
         ));
