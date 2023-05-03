@@ -97,7 +97,7 @@ to read!!!''',
         title: 'The Story of Walt Disney',
         author: 'Susan B Katz',
         imageUrl:
-            'https://d1b14unh5d6w7g.cloudfront.net/1638782369.01.S001.LXXXXXXX.jpg?Expires=1682101967&Signature=aqt3oFoULrxSqS-SFfqZ8ljx8oC9Rv64BVtopp15tjY15IqkWX6wkT3DEmTdt8XpmS3tNF2IRU5MHIxx6v4qKv3Y4pRDNYy-aUVuVeiOygXi7lCqYvHwC8plxshZt09zZCc8Uqq0SFeqTujjCKfqFiiZitXspFQ~MXFJbM66wqE_&Key-Pair-Id=APKAIUO27P366FGALUMQ',
+            'https://m.media-amazon.com/images/P/1638782369.01._SCLZZZZZZZ_SX500_.jpg',
         authorImageUrl:
             'https://m.media-amazon.com/images/S/amzn-author-media-prod/8buq5ld6qrn1s8gnbi90e4ktci._SX253_CR0%2C0%2C253%2C253_.jpg',
         star: 3.5,
